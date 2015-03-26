@@ -1,22 +1,10 @@
 
-
 /**
  * Created by taoweiji on 15/3/26.
  */
 public class JZLocationConverter {
 
-    //
-    //  JZLocationConverter.m
-    //  JZCLLocationMangerDome
-    //
-    //  Created by jack zhou on 13-8-22.
-    //  Copyright (c) 2013年 JZ. All rights reserved.
-    //
-    //  private static double _x;
-    //  private static double _y;
     private static final double LAT_OFFSET_0(double x, double y) {
-        // _x=x;
-        //  _y=y;
         return -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * Math.sqrt(Math.abs(x));
     }
 
@@ -48,28 +36,13 @@ public class JZLocationConverter {
         return (150.0 * Math.sin(x / 12.0 * Math.PI) + 300.0 * Math.sin(x / 30.0 * Math.PI)) * 2.0 / 3.0;
     }
 
-    //     public static final double  LAT_OFFSET_0 = (x,y) -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * sqrt(fabs(x));
-
-    //     #define LAT_OFFSET_1 (20.0 * sin(6.0 * x * M_PI) + 20.0 * sin(2.0 * x * M_PI)) * 2.0 / 3.0
-    //     #define LAT_OFFSET_2 (20.0 * sin(y * M_PI) + 40.0 * sin(y / 3.0 * M_PI)) * 2.0 / 3.0
-    //     #define LAT_OFFSET_3 (160.0 * sin(y / 12.0 * M_PI) + 320 * sin(y * M_PI / 30.0)) * 2.0 / 3.0
-
-    //      #define LON_OFFSET_0(x,y) 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * sqrt(fabs(x))
-    //       #define LON_OFFSET_1 (20.0 * sin(6.0 * x * M_PI) + 20.0 * sin(2.0 * x * M_PI)) * 2.0 / 3.0
-    //       #define LON_OFFSET_2 (20.0 * sin(x * M_PI) + 40.0 * sin(x / 3.0 * M_PI)) * 2.0 / 3.0
-    //       #define LON_OFFSET_3 (150.0 * sin(x / 12.0 * M_PI) + 300.0 * sin(x / 30.0 * M_PI)) * 2.0 / 3.0
-
     private static double RANGE_LON_MAX = 137.8347;
     private static double RANGE_LON_MIN = 72.004;
     private static double RANGE_LAT_MAX = 55.8271;
     private static double RANGE_LAT_MIN = 0.8293;
-    // jzA = 6378245.0, 1/f = 298.3
-    // b = a * (1 - f)
-    // ee = (a^2 - b^2) / a^2;
-    private static double jzA           = 6378245.0;
-    private static double jzEE          = 0.00669342162296594323;
 
-    // @implementation JZLocationConverter
+    private static double jzA  = 6378245.0;
+    private static double jzEE = 0.00669342162296594323;
 
     public static double transformLat(double x, double y) {
         double ret = LAT_OFFSET_0(x, y);
